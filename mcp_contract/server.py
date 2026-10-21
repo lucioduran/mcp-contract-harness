@@ -129,6 +129,8 @@ class Session:
             if self.state == "negotiated":
                 self.state = "ready"
         elif msg.get("method") == "notifications/cancelled":
+            if "reason" in params and not isinstance(params["reason"], str):
+                return
             rid = params.get("requestId")
             if valid_id(rid) and rid in self.pending:
                 self.pending.pop(rid).cancel()

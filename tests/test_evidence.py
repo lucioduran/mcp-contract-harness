@@ -55,6 +55,12 @@ class EvidenceTests(unittest.TestCase):
                         break
             mutations.append(rows)
         for rows in mutations:
+            smoke_accepts = any(
+                row["direction"] == "server_to_client"
+                and "protocolVersion" in json.loads(row["wire"]).get("result", {})
+                for row in rows
+            )
+            self.assertTrue(smoke_accepts)
             with self.assertRaises(ValueError):
                 self.inspect(rows)
 

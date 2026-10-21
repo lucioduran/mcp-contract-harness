@@ -1,0 +1,13 @@
+{
+  "name": "mcp-contract-harness-clients",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "check": "tsc --noEmit && prettier --check clients/*.mjs",
+    "format": "prettier --write clients/*.mjs",
+    "interop": "node clients/typescript-sdk.mjs"
+  },
+  "dependencies": {"@modelcontextprotocol/sdk": "1.17.5"},
+  "devDependencies": {"typescript": "5.9.2", "@types/node": "24.3.0", "prettier": "3.6.2"}
+}

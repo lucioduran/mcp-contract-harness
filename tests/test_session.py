@@ -204,6 +204,10 @@ class SessionTests(unittest.IsolatedAsyncioTestCase):
             rid="slow",
         )
         self.assertIn("slow", self.session.pending)
+        await self.notify(
+            "notifications/cancelled", {"requestId": "slow", "reason": []}
+        )
+        self.assertIn("slow", self.session.pending)
         await self.notify("notifications/cancelled", {"requestId": "slow"})
         await asyncio.sleep(0)
         self.assertNotIn("slow", self.session.pending)

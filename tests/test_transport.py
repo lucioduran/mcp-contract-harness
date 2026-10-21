@@ -43,7 +43,7 @@ class TransportTests(unittest.TestCase):
 
     def test_main_and_broken_pipe(self):
         with (
-            patch("mcp_contract.server.serve", return_value=None),
+            patch("mcp_contract.server.serve", new=lambda: None),
             patch("asyncio.run", side_effect=BrokenPipeError),
         ):
             main()

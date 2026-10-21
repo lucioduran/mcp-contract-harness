@@ -1,0 +1,34 @@
+{"direction": "client_to_server", "wire": "{\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"tools/list\"}\n"}
+{"direction": "server_to_client", "wire": "{\"jsonrpc\": \"2.0\", \"id\": 1, \"error\": {\"code\": -32000, \"message\": \"Session is not initialized\"}}\n"}
+{"direction": "client_to_server", "wire": "{\"jsonrpc\":\"2.0\",\"id\":2,\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2099-01-01\",\"capabilities\":{},\"clientInfo\":{\"name\":\"raw-reference\",\"version\":\"0.1.0\"}}}\n"}
+{"direction": "server_to_client", "wire": "{\"jsonrpc\": \"2.0\", \"id\": 2, \"result\": {\"protocolVersion\": \"2025-06-18\", \"capabilities\": {\"resources\": {}, \"tools\": {}}, \"serverInfo\": {\"name\": \"mcp-contract-harness\", \"version\": \"0.1.0\"}}}\n"}
+{"direction": "client_to_server", "wire": "{\"jsonrpc\":\"2.0\",\"method\":\"notifications/initialized\"}\n"}
+{"direction": "client_to_server", "wire": "{\"jsonrpc\":\"2.0\",\"id\":3,\"method\":\"resources/list\",\"params\":{}}\n"}
+{"direction": "server_to_client", "wire": "{\"jsonrpc\": \"2.0\", \"id\": 3, \"result\": {\"resources\": [{\"uri\": \"notes://station/arrival\", \"name\": \"Arrival checklist\", \"mimeType\": \"text/plain\"}, {\"uri\": \"notes://station/power\", \"name\": \"Power reserve\", \"mimeType\": \"text/plain\"}], \"nextCursor\": \"catalog-r-2\"}}\n"}
+{"direction": "client_to_server", "wire": "{\"jsonrpc\":\"2.0\",\"id\":4,\"method\":\"resources/list\",\"params\":{\"cursor\":\"catalog-r-2\"}}\n"}
+{"direction": "server_to_client", "wire": "{\"jsonrpc\": \"2.0\", \"id\": 4, \"result\": {\"resources\": [{\"uri\": \"notes://station/radio\", \"name\": \"Radio check\", \"mimeType\": \"text/plain\"}]}}\n"}
+{"direction": "client_to_server", "wire": "{\"jsonrpc\":\"2.0\",\"id\":5,\"method\":\"tools/list\",\"params\":{}}\n"}
+{"direction": "server_to_client", "wire": "{\"jsonrpc\": \"2.0\", \"id\": 5, \"result\": {\"tools\": [{\"name\": \"search_notes\", \"description\": \"Search fictional station notes without side effects.\", \"inputSchema\": {\"type\": \"object\", \"properties\": {\"query\": {\"type\": \"string\", \"minLength\": 1, \"maxLength\": 200}}, \"required\": [\"query\"], \"additionalProperties\": false}, \"annotations\": {\"readOnlyHint\": true, \"openWorldHint\": false}}], \"nextCursor\": \"catalog-t-1\"}}\n"}
+{"direction": "client_to_server", "wire": "{\"jsonrpc\":\"2.0\",\"id\":6,\"method\":\"tools/list\",\"params\":{\"cursor\":\"catalog-t-1\"}}\n"}
+{"direction": "server_to_client", "wire": "{\"jsonrpc\": \"2.0\", \"id\": 6, \"result\": {\"tools\": [{\"name\": \"read_note\", \"description\": \"Read a note with an optional bounded cancellation-test delay.\", \"inputSchema\": {\"type\": \"object\", \"properties\": {\"uri\": {\"type\": \"string\"}, \"delay_ms\": {\"type\": \"integer\", \"minimum\": 0, \"maximum\": 2000}}, \"required\": [\"uri\"], \"additionalProperties\": false}, \"annotations\": {\"readOnlyHint\": true, \"openWorldHint\": false}}]}}\n"}
+{"direction": "client_to_server", "wire": "{\"jsonrpc\":\"2.0\",\"id\":7,\"method\":\"resources/read\",\"params\":{\"uri\":\"notes://station/arrival\"}}\n"}
+{"direction": "server_to_client", "wire": "{\"jsonrpc\": \"2.0\", \"id\": 7, \"result\": {\"contents\": [{\"uri\": \"notes://station/arrival\", \"mimeType\": \"text/plain\", \"text\": \"Confirm station identity before docking.\"}]}}\n"}
+{"direction": "client_to_server", "wire": "{\"jsonrpc\":\"2.0\",\"id\":8,\"method\":\"tools/call\",\"params\":{\"name\":\"search_notes\",\"arguments\":{\"query\":\"battery\"}}}\n"}
+{"direction": "server_to_client", "wire": "{\"jsonrpc\": \"2.0\", \"id\": 8, \"result\": {\"content\": [{\"type\": \"text\", \"text\": \"[\\\"notes://station/power\\\"]\"}], \"isError\": false}}\n"}
+{"direction": "client_to_server", "wire": "{\"jsonrpc\":\"2.0\",\"id\":9,\"method\":\"resources/list\",\"params\":{\"cursor\":\"invalid\"}}\n"}
+{"direction": "server_to_client", "wire": "{\"jsonrpc\": \"2.0\", \"id\": 9, \"error\": {\"code\": -32602, \"message\": \"Invalid cursor\"}}\n"}
+{"direction": "client_to_server", "wire": "{\"jsonrpc\":\"2.0\",\"id\":10,\"method\":\"absent\"}\n"}
+{"direction": "server_to_client", "wire": "{\"jsonrpc\": \"2.0\", \"id\": 10, \"error\": {\"code\": -32601, \"message\": \"Method not found\"}}\n"}
+{"direction": "client_to_server", "wire": "{\"jsonrpc\":\"2.0\",\"id\":11,\"method\":\"resources/read\",\"params\":{\"uri\":\"file:///etc/passwd\"}}\n"}
+{"direction": "server_to_client", "wire": "{\"jsonrpc\": \"2.0\", \"id\": 11, \"error\": {\"code\": -32002, \"message\": \"Resource not found\"}}\n"}
+{"direction": "client_to_server", "wire": "{\"jsonrpc\":\"2.0\",\"id\":12,\"method\":\"tools/call\",\"params\":{\"name\":\"search_notes\",\"arguments\":{\"query\":\"\"}}}\n"}
+{"direction": "server_to_client", "wire": "{\"jsonrpc\": \"2.0\", \"id\": 12, \"result\": {\"content\": [{\"type\": \"text\", \"text\": \"Expected a query of 1 to 200 characters\"}], \"isError\": true}}\n"}
+{"direction": "client_to_server", "wire": "{broken\n"}
+{"direction": "server_to_client", "wire": "{\"jsonrpc\": \"2.0\", \"id\": null, \"error\": {\"code\": -32700, \"message\": \"Parse error\"}}\n"}
+{"direction": "client_to_server", "wire": "{\"jsonrpc\":\"2.0\",\"id\":\"cancel-me\",\"method\":\"tools/call\",\"params\":{\"name\":\"read_note\",\"arguments\":{\"uri\":\"notes://station/power\",\"delay_ms\":400}}}\n"}
+{"direction": "client_to_server", "wire": "{\"jsonrpc\":\"2.0\",\"method\":\"notifications/cancelled\",\"params\":{\"requestId\":\"cancel-me\",\"reason\":\"Contract test\"}}\n"}
+{"direction": "client_to_server", "wire": "{\"jsonrpc\":\"2.0\",\"id\":13,\"method\":\"ping\"}\n"}
+{"direction": "server_to_client", "wire": "{\"jsonrpc\": \"2.0\", \"id\": 13, \"result\": {}}\n"}
+{"direction": "client_to_server", "wire": "{\"jsonrpc\":\"2.0\",\"method\":\"notifications/cancelled\",\"params\":{\"requestId\":\"unknown\"}}\n"}
+{"direction": "client_to_server", "wire": "{\"jsonrpc\":\"2.0\",\"id\":14,\"method\":\"ping\"}\n"}
+{"direction": "server_to_client", "wire": "{\"jsonrpc\": \"2.0\", \"id\": 14, \"result\": {}}\n"}

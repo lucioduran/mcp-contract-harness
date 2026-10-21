@@ -71,3 +71,28 @@ class EvidenceTests(unittest.TestCase):
         ]:
             with self.assertRaises(ValueError):
                 self.inspect([row])
+
+
+class ReportTests(unittest.TestCase):
+    def test_reference_hashes_and_source_identity(self):
+        from clients.reproduce import verify
+
+        report = verify(Path("results/reference"))
+        self.assertEqual(len(report["clients"]), 3)
+
+    def test_reject_tampered_report_and_trace(self):
+        import shutil
+        from unittest.mock import patch
+
+        from clients.reproduce import verify
+
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder) / "copy"
+            shutil.copytree("results/reference", root)
+            with patch("clients.reproduce.source_hashes", return_value={}):
+                with self.assertRaisesRegex(ValueError, "Source"):
+                    verify(root)
+            trace = root / "raw.jsonl"
+            trace.write_bytes(trace.read_bytes() + b"\n")
+            with self.assertRaisesRegex(ValueError, "hash mismatch"):
+                verify(root)

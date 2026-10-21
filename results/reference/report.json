@@ -1,0 +1,119 @@
+{
+  "schema_version": 1,
+  "timestamp_utc": "2026-10-21T21:33:32.334799+00:00",
+  "source_revision": "781f24d4188cae00d231460ccce04638f877f33c",
+  "source_sha256": {
+    "clients/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "clients/evidence.py": "152d1818f8faa3818ddae5b1072b7509c296c84c4b97c9fe81b941a7d3eab60b",
+    "clients/python_sdk.py": "19b62c461db69f31048f61638cc397fb0e8bf5c35dda0689d34919a0cecd700d",
+    "clients/raw.py": "45fec97f45eb03b1eed362960d2de26ed08114e54bbf3ab8ffcf6aef273e1826",
+    "clients/reproduce.py": "77b9de48a70208fecb743e723a0a10fa2e1963c7c065a9dbefa886021bffe6a4",
+    "clients/typescript-sdk.mjs": "de4a4385f1a8a9551606793d8cf9078a6339ae6c2d17cb723bce4b0235e3608e",
+    "clients/wire_proxy.py": "e3c6d8c7c70c3bb8a404cc85697df1c1fdbd3623145c11d220c4b100674b94c9",
+    "mcp_contract/__init__.py": "8a9a4a1423e312c849b5d4f10f5a74d26a433844d3711d9fd7e16a08489b8b44",
+    "mcp_contract/catalog.py": "163b61136fba3454add6694d38492f6ee6b899c34864f4c10b971faaab720fdc",
+    "mcp_contract/server.py": "92cdd2e06587455af66f4c33f02532e5f725f8be733da4846274c5f31fb86959",
+    "package-lock.json": "4b407585a14da45edef44e427fcc5542020fc9ad054dc0bfb992f638c5c60a45",
+    "requirements-dev.lock": "2a067e8bdecf332b78d0c0d5929db98db54a63f87b0f4d0e26c7881f5ab545ac"
+  },
+  "environment": {
+    "python": "3.11.9",
+    "node": "v24.8.0",
+    "platform": "macOS-26.7.1-x86_64-i386-64bit",
+    "machine": "x86_64",
+    "cpu": "Intel(R) Xeon(R) W-3223 CPU @ 3.50GHz",
+    "logical_cpus": 16,
+    "python_sdk": "2.3.0",
+    "cpu_work_threads": 1
+  },
+  "measurement": "Local correctness checks; no load or performance measurements",
+  "paid_api_calls": 0,
+  "model_calls": 0,
+  "seed": null,
+  "clients": [
+    {
+      "client": "raw-reference",
+      "version": "0.1.0",
+      "checks": [
+        "pre_initialization_error",
+        "version_fallback",
+        "resource_pagination",
+        "tool_pagination",
+        "resource_read",
+        "tool_success",
+        "invalid_cursor",
+        "unknown_method",
+        "unknown_resource",
+        "tool_execution_error",
+        "parse_error",
+        "cancellation_no_response_and_session_alive",
+        "unknown_cancellation_ignored"
+      ],
+      "trace": "raw.jsonl",
+      "trace_sha256": "b137a6637773ff9ca18cf073418cfd17a6a76c3c8baa99e9cf066cc0f228d8dd",
+      "wire_validation": {
+        "messages": 34,
+        "cancelled_requests": 1,
+        "error_codes": [
+          -32700,
+          -32602,
+          -32601,
+          -32002,
+          -32000
+        ],
+        "protocol": "2025-06-18"
+      },
+      "stderr": ""
+    },
+    {
+      "client": "official-python-sdk",
+      "version": "2.3.0",
+      "checks": [
+        "version_negotiation",
+        "resources_pagination",
+        "tools_pagination",
+        "resource_read",
+        "tool_success",
+        "tool_execution_error",
+        "invalid_cursor",
+        "cancellation_and_session_alive"
+      ],
+      "trace": "python.jsonl",
+      "trace_sha256": "ea7f7eaa958e0b579a557c5568660834fcb948aa7d8cc55ac8fbd28178660ef7",
+      "wire_validation": {
+        "messages": 23,
+        "cancelled_requests": 1,
+        "error_codes": [
+          -32602
+        ],
+        "protocol": "2025-06-18"
+      },
+      "stderr": ""
+    },
+    {
+      "client": "official-typescript-sdk",
+      "version": "1.32.1",
+      "checks": [
+        "version_negotiation",
+        "resources_pagination",
+        "tools_pagination",
+        "resource_read",
+        "tool_success",
+        "tool_execution_error",
+        "invalid_cursor",
+        "cancellation_and_session_alive"
+      ],
+      "trace": "typescript.jsonl",
+      "trace_sha256": "513a8be31802a50072f8a0603845e67a9bcd213a082419fd26a376b7ded7f617",
+      "wire_validation": {
+        "messages": 23,
+        "cancelled_requests": 1,
+        "error_codes": [
+          -32602
+        ],
+        "protocol": "2025-06-18"
+      },
+      "stderr": ""
+    }
+  ]
+}
